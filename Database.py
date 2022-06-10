@@ -11,7 +11,9 @@ c.execute("SELECT * FROM customers")
 
 #fetchone()
 #fetchmany(3)
-print(c.fetchall())
+items = c.fetchall()
+for item in items:
+    print(item)
 
 print("command executed succesfully")
 
