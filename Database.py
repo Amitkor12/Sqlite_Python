@@ -7,15 +7,20 @@ connection = sqlite3.connect('customer.db')
 c = connection.cursor()
 
 # query the database
-c.execute("SELECT * FROM customers")
+# c.execute("SELECT rowid, * FROM customers")
+
+# using where cluase
+c.execute("SELECT rowid, * FROM customers WHERE last_name='Korgoankar'")
+
+
 
 #fetchone()
 #fetchmany(3)
-print("NAME " + " \t\t" + "EMAIL")
-print("______"+"\t\t"+"______")
+# print("NAME " + " \t\t" + "EMAIL")
+# print("______"+"\t\t______")
 items = c.fetchall()
 for item in items:
-    print(item[0] + " " + item[1] + "\t\t" + item[2])
+    print(item)
 
 print("command executed succesfully")
 
