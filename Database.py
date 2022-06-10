@@ -6,10 +6,10 @@ connection = sqlite3.connect('customer.db')
 # creat a cursor
 c = connection.cursor()
 
-# providing table content 
-c.execute(" INSERT INTO customers VALUES ('hemant','Korgoankar','hmu@gmail.com')")
-c.execute(" INSERT INTO customers VALUES ('anant','Korgoankar','anant@gmail.com')")
+# providing multi users at same time 
+multi_customer = [('broun','wise','wise12@gmail.com'),('witley','wine','winewit@yahooh.in')]
 
+c.executemany("INSERT INTO customers VALUES (?,?,?)", multi_customer)
 
 print("command executed succesfully")
 
