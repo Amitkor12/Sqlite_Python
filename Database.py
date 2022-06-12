@@ -6,17 +6,13 @@ connection = sqlite3.connect('customer.db')
 # creat a cursor
 c = connection.cursor()
 
-# query the database
-# c.execute("SELECT rowid, * FROM customers")
+# query the database -- ordered by
+# assending order
+c.execute("SELECT rowid, * FROM customers ORDER BY last_name ")
 
-# using where cluase
-# deleting records
-c.execute(""" DELETE FROM customers 
-              WHERE rowid = '3'
- 
-""")
+# desending order
+# c.execute("SELECT rowid, * FROM customers ORDER BY last_name DESC")
 
-c.execute("SELECT * FROM customers")
 
 #fetchone()
 #fetchmany(3)
