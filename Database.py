@@ -1,22 +1,26 @@
+from multiprocessing import connection
 import sqlite3
 
-# create A database
-connection = sqlite3.connect('customer.db')
+def sqldata():
+    connection = sqlite3.connect('customer.db')
 
-# creat a cursor
-c = connection.cursor()
+    curs = connection.cursor()
 
-# query the database -- And/Or
-c.execute("SELECT rowid, * FROM customers WHERE first_name like 'A%' AND last_name like 'Kor%'")
+    curs.execute("select rowid, * from customers")
 
-items = c.fetchall()
-for item in items:
-    print(item)
+    items = curs.fetchall()
+    for item in items:
+        print(item)
 
-print("command executed succesfully")
+    connection.commit()
 
-# commiting our database
-connection.commit()
+    connection.close()
 
-# close connection
-connection.close()
+def add_records(first,last,email):
+    connection = sqlite3.connect('customer.db')
+    curs = connection.cursor()
+
+    curs.execute("insert into customers values(?,?,?)",(first,last,email))
+
+    connection.commit()
+    connection.close()
