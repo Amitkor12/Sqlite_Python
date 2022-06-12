@@ -10,9 +10,9 @@ c = connection.cursor()
 # c.execute("SELECT rowid, * FROM customers")
 
 # using where cluase
-# update database data
-c.execute(""" UPDATE customers SET first_name = 'Ruin'
-              WHERE last_name = 'wise'
+# deleting records
+c.execute(""" DELETE FROM customers 
+              WHERE rowid = '3'
  
 """)
 
@@ -33,4 +33,3 @@ connection.commit()
 
 # close connection
 connection.close()
-
