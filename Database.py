@@ -10,9 +10,13 @@ c = connection.cursor()
 # c.execute("SELECT rowid, * FROM customers")
 
 # using where cluase
-c.execute("SELECT rowid, * FROM customers WHERE last_name='Korgoankar'")
+# update database data
+c.execute(""" UPDATE customers SET first_name = 'Ruin'
+              WHERE last_name = 'wise'
+ 
+""")
 
-
+c.execute("SELECT * FROM customers")
 
 #fetchone()
 #fetchmany(3)
