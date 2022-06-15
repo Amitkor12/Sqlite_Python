@@ -42,3 +42,15 @@ def delet_records(id):
 
     connection.commit()
     connection.close()
+
+def show_emails(email):
+    connection = sqlite3.connect('customer.db')
+    curs = connection.cursor()
+
+    curs.execute("select * from customers where email = (?)",(email,))
+    items = curs.fetchall()
+    for item in items:
+        print(item)
+
+    connection.commit()
+    connection.close()
